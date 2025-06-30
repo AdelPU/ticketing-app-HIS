@@ -995,11 +995,14 @@ class DataService {
 // send email
 window.sendEmail = async function ({ to, subject, html }) {
   try {
-    const res = await fetch("http://localhost:3000/send-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ to, subject, html }),
-    });
+    const res = await fetch(
+      "https://ticketing-app-backend-blq3.onrender.com/send-email",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ to, subject, html }),
+      }
+    );
     if (!res.ok) {
       const errorData = await res.json();
       throw new Error(errorData.error || "Failed to send email");
@@ -1014,13 +1017,16 @@ window.sendEmail = async function ({ to, subject, html }) {
 // get emails
 window.getEByI = async function fetchUserEmails() {
   try {
-    const res = await fetch("http://localhost:3000/get-user-emails", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        secretKey: "mySuperSecret13579",
-      }),
-    });
+    const res = await fetch(
+      "https://ticketing-app-backend-blq3.onrender.com/get-user-emails",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          secretKey: "mySuperSecret13579",
+        }),
+      }
+    );
 
     if (!res.ok) {
       const errorData = await res.json();
