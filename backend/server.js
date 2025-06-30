@@ -6,7 +6,11 @@ const { createClient } = require("@supabase/supabase-js");
 require("dotenv").config();
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://ticketing-app-his.onrender.com",
+  })
+);
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
